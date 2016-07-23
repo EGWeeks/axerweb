@@ -1,16 +1,150 @@
-#header {
-	margin-top: 30px;
+/******************************
+
+	These styles are applied to all pages in the site
+	Assets are my own and I am only using for testing
+
+	Designed By Ethan Weeks
+******************************/
+
+
+/************
+	MOBILE
+************/
+@media (max-width: 767px) {
+
+	.display-nav-logo {
+		display: initial;
+	}
+
+	.display-center-logo {
+		display: none;
+	}
+
+	.navbar-brand {
+		padding: 0;
+	}
 }
+
+
+/***************
+	TABLET & DESKTOP
+***************/
+@media (min-width: @screen-sm-min) {
+
+	.display-nav-logo {
+		display: none;
+	}
+
+	.display-center-logo {
+		display: initial;
+	}
+
+	@{li-nav}:nth-child(2) {
+		margin: 0 14rem;
+	}
+
+}
+
+
+
+body {
+	background: url('../images/pretty-backgrounds.jpg') no-repeat;
+	background-size: 100% auto;
+}
+
+/*****************
+	NAVBAR
+*****************/
+
+#header {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+// Center nav
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+// Logo size
+#head-logo {
+	width: 50px
+}
+
+// Transparent navbar
+.navbar-default {
+	background-color: rgba(148, 146, 146, 0.0);
+	border-color: rgba(148, 146, 146, 0.0);
+}
+
+@{li-nav} {
+	font-family: 'Slabo 27px', serif;
+	width: 13rem;
+	font-size: 3rem;
+	a {
+		color: rgba(102, 51, 0, 1);
+	}
+}
+
+@{active-nav-class} {
+	background-color: rgba(128, 128, 128, 0.0);
+	color: rgba(102, 51, 0, 1);
+	&:hover {
+		background-color: rgba(128, 128, 128, 0.0);
+		color: #777;
+	}
+	&:focus {
+		color: #777;
+	}
+}
+
+
+/**************
+	BACKGROUND IMAGE + HERO SLOGAN
+**************/
+.hero-image {
+	width: 100%;
+}
+
+.hero-row {
+	margin: 10% 0;
+	h1 {
+		font-size: 6rem;
+		color: black;
+	}
+	h3 {
+		font-size: 3rem;
+		color: black;
+	}
+}
+
+.btn-lg {
+	background-color: rgba(0, 51, 0, 0.3);
+	font-size: 3rem;
+}
+
+/****************
+	INFORMATION
+****************/
+.octocat-img {
+	width: 100px;
+}
+
+
+
+/**************
+	footer
+**************/
 
 #footer {
 	margin-top: 30px;
 	border-top: 1px solid #eeeeee;
 	padding-top: 30px;
 	color: #777777;
-}
-
-.gallery-image img {
-    display: block;
-    max-width: 100%;
-    height: auto;
 }

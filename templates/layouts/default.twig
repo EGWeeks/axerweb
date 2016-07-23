@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>{{ title|default("list") }}</title>
+		<link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link href="/styles/site.min.css" rel="stylesheet">
 		{% if user and user.canAccessKeystone %}
@@ -20,6 +21,11 @@
 		{% block head %}{% endblock %}
 	</head>
 	<body>
+		<div class='row display-center-logo'>
+			<div class='col-sm-12 col-md-12 text-center'>
+				<img id='head-logo' src="/images/d.png" alt='D logo' />
+			</div>
+		</div>
 		<div id="header" class="container">
 			<div role="navigation" class="navbar navbar-default">
 				<div class="container-fluid">
@@ -30,10 +36,10 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="/">list</a>
+						<a class="navbar-brand display-nav-logo" href="/"><img id="head-logo" src="/images/d.png" alt="D logo" /></a>
 					</div>
 					<div class="collapse navbar-collapse">
-						<ul class="nav navbar-nav navbar-left">
+						<ul class="nav navbar-nav">
 							{% for link in navLinks %}
 								{% set linkClass = '' %}
 								{% if link.key == section %}
@@ -43,16 +49,6 @@
 									<a href="{{ link.href }}">{{ link.label }}</a>
 								</li>
 							{% endfor %}
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							{% if user is defined %}
-								{% if user.canAccessKeystone %}
-									<li><a href="/keystone">Open Keystone</a></li>
-								{% endif %}
-								<li><a href="/keystone/signout">Sign Out</a></li>
-							{% else %}
-								<li><a href="/keystone/signin">Sign In</a></li>
-							{% endif %}
 						</ul>
 					</div>
 				</div>
@@ -64,7 +60,17 @@
 			{% block content %}{% endblock %}
 		</div>
 		<div id="footer" class="container">
-			<p>Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.</p>
+			<p>
+				Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a> | 
+				{% if user is defined %}
+					{% if user.canAccessKeystone %}
+						<a href="/keystone">Open Keystone</a> | 
+					{% endif %}
+					<a href="/keystone/signout">Sign Out</a>
+				{% else %}
+					<a href="/keystone/signin">Sign In</a>
+				{% endif %}
+			</p>
 		</div>
 		<script src="/js/jquery/jquery-1.11.3.min.js"></script>
 		<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
